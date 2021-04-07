@@ -6,17 +6,15 @@ import debounce from "./debounce/debounce";
 import throttle from "./throttle/throttle";
 import flat from './flat/flat';
 import memoize from "./memoize/memoize";
+import once from "./once/once"
 
-function sum(arr: any[]) {
-    return arr.reduce((pre, cur) => {
-        return pre + cur;
-    }, 0)
+function test(num) {
+    console.log(num);
 }
-const obj = [1, 2];
-const fn = memoize(sum);
-console.log(fn(obj));
-obj.push(22);
-console.log(fn(obj));
-console.log(fn([1, 2, 3]));
-console.log(fn([1, 2, 3, 4]));
 
+const fn = once(test, 2);
+
+fn(1)
+fn(2)
+fn(3)
+fn(4)
